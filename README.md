@@ -1,2 +1,2 @@
 # jm-class
-Class for jm-* project
+class lib for jm-* project
