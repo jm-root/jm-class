@@ -1,6 +1,6 @@
-import Class from './class'
+import Class from './class';
 
-let $$ = Class.extend({
+let Obj = Class.extend({
     _className: 'object',
 
     attr: function (attrs) {
@@ -14,11 +14,11 @@ let $$ = Class.extend({
     },
 });
 
-let module = ($, name = 'object') => {
-    $.Object = $$;
+let moduleObj = ($, name = 'object') => {
+    $.Object = Obj;
 
     $.object = function () {
-        return new $$();
+        return new Obj();
     };
 
     return {
@@ -30,5 +30,5 @@ let module = ($, name = 'object') => {
     };
 };
 
-export default $$;
-export {$$ as Obj, module};
+export default Obj;
+export {Obj, moduleObj};

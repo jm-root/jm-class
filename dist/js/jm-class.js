@@ -105,7 +105,7 @@ $$.extend = function (prop) {
     return Class;
 };
 
-var _module = function _module($) {
+var moduleClass = function moduleClass($) {
     var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Class';
 
     $[name] = $$;
@@ -120,7 +120,7 @@ var _module = function _module($) {
 
 exports.default = $$;
 exports.Class = $$;
-exports.module = _module;
+exports.moduleClass = moduleClass;
 },{}],2:[function(require,module,exports){
 (function (global){
 'use strict';
@@ -136,7 +136,7 @@ var _object = require('./object');
 
 if (typeof global !== 'undefined' && global) {
     if (global.jm) {
-        global.jm.use(_class.module).use(_object.module);
+        global.jm.use(_class.moduleClass).use(_object.moduleObj);
     }
 }
 
@@ -150,7 +150,7 @@ exports.Obj = _object.Obj;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.module = exports.Obj = undefined;
+exports.moduleObj = exports.Obj = undefined;
 
 var _class = require('./class');
 
@@ -158,7 +158,7 @@ var _class2 = _interopRequireDefault(_class);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var $$ = _class2.default.extend({
+var Obj = _class2.default.extend({
     _className: 'object',
 
     attr: function attr(attrs) {
@@ -172,13 +172,13 @@ var $$ = _class2.default.extend({
     }
 });
 
-var _module = function _module($) {
+var moduleObj = function moduleObj($) {
     var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'object';
 
-    $.Object = $$;
+    $.Object = Obj;
 
     $.object = function () {
-        return new $$();
+        return new Obj();
     };
 
     return {
@@ -190,7 +190,7 @@ var _module = function _module($) {
     };
 };
 
-exports.default = $$;
-exports.Obj = $$;
-exports.module = _module;
+exports.default = Obj;
+exports.Obj = Obj;
+exports.moduleObj = moduleObj;
 },{"./class":1}]},{},[2])

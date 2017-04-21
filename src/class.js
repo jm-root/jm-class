@@ -87,7 +87,7 @@ $$.extend = function (prop) {
     return Class;
 };
 
-let module = ($, name = 'Class') => {
+let moduleClass = ($, name = 'Class') => {
     $[name] = $$;
 
     return {
@@ -99,4 +99,4 @@ let module = ($, name = 'Class') => {
 };
 
 export default $$;
-export {$$ as Class, module};
+export {$$ as Class, moduleClass};
