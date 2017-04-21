@@ -1,6 +1,6 @@
 {
   "name": "jm-class",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "class lib for jm-* projects",
   "main": "./lib/index",
   "scripts": {
@@ -43,7 +43,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
-    "jm-core": "^1.0.2",
+    "jm-core": "^1.0.3",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0"
   }
