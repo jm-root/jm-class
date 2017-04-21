@@ -9,10 +9,10 @@ var fnTest = /xyz/.test(function () {
 }) ? /\b_super\b/ : /.*/;
 
 // The base Class implementation (does nothing)
-var $$ = function $$() {};
+var Class = function Class() {};
 
 // Create a new Class that inherits from this class
-$$.extend = function (prop) {
+Class.extend = function (prop) {
     var _super = this.prototype;
 
     // Instantiate a base class (but only create the instance,
@@ -81,7 +81,7 @@ $$.extend = function (prop) {
     }
 
     // The dummy class constructor
-    var Class = function Class() {
+    var C = function C() {
         if (this._className) {
             Object.defineProperty(this, 'className', {
                 value: this._className,
@@ -94,21 +94,21 @@ $$.extend = function (prop) {
     };
 
     // Populate our constructed prototype object
-    Class.prototype = prototype;
+    C.prototype = prototype;
 
     // Enforce the constructor to be what we expect
-    Class.prototype.constructor = Class;
+    C.prototype.constructor = C;
 
     // And make this class extendable
-    Class.extend = $$.extend;
+    C.extend = Class.extend;
 
-    return Class;
+    return C;
 };
 
 var moduleClass = function moduleClass($) {
     var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Class';
 
-    $[name] = $$;
+    $[name] = Class;
 
     return {
         name: name,
@@ -118,8 +118,8 @@ var moduleClass = function moduleClass($) {
     };
 };
 
-exports.default = $$;
-exports.Class = $$;
+exports.default = Class;
+exports.Class = Class;
 exports.moduleClass = moduleClass;
 },{}],2:[function(require,module,exports){
 (function (global){

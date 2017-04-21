@@ -3,11 +3,11 @@ let fnTest = /xyz/.test(function () {
 }) ? /\b_super\b/ : /.*/;
 
 // The base Class implementation (does nothing)
-let $$ = function () {
+let Class = function () {
 };
 
 // Create a new Class that inherits from this class
-$$.extend = function (prop) {
+Class.extend = function (prop) {
     let _super = this.prototype;
 
     // Instantiate a base class (but only create the instance,
@@ -58,7 +58,7 @@ $$.extend = function (prop) {
     }
 
     // The dummy class constructor
-    let Class = function () {
+    let C = function () {
         if (this._className) {
             Object.defineProperty(
                 this,
@@ -76,19 +76,19 @@ $$.extend = function (prop) {
     };
 
     // Populate our constructed prototype object
-    Class.prototype = prototype;
+    C.prototype = prototype;
 
     // Enforce the constructor to be what we expect
-    Class.prototype.constructor = Class;
+    C.prototype.constructor = C;
 
     // And make this class extendable
-    Class.extend = $$.extend;
+    C.extend = Class.extend;
 
-    return Class;
+    return C;
 };
 
 let moduleClass = ($, name = 'Class') => {
-    $[name] = $$;
+    $[name] = Class;
 
     return {
         name: name,
@@ -98,5 +98,5 @@ let moduleClass = ($, name = 'Class') => {
     };
 };
 
-export default $$;
-export {$$ as Class, moduleClass};
+export default Class;
+export {Class, moduleClass};
